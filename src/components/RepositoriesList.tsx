@@ -5,7 +5,7 @@ import { PushSpinner } from "react-spinners-kit";
 
 const RepositoriesList: React.FC = () => {
   const [term, setTerm] = useState<string>("");
-  const { searchRepositories } = useActions();
+  const { searchRepositories, removedAllPackage } = useActions();
   const { data, isLoading, error } = useTypedSelector(
     (state) => state.repositories
   );
@@ -16,6 +16,11 @@ const RepositoriesList: React.FC = () => {
     term && searchRepositories(term);
   };
 
+  const handleRemovePackage = () => {
+    removedAllPackage();
+    setTerm("");
+  };
+
   return (
     <div>
       <form onSubmit={handleFinish}>
@@ -23,9 +28,14 @@ const RepositoriesList: React.FC = () => {
         <button>Search</button>
       </form>
 
+      <button onClick={handleRemovePackage}>Removed All Package</button>
+      <hr />
+
       {error && <h3>{error}</h3>}
 
       {isLoading && <PushSpinner />}
+
+      {!error && !isLoading && !data?.length && "not found package"}
 
       {!error && !isLoading && data.map((name) => <div key={name}>{name}</div>)}
     </div>
