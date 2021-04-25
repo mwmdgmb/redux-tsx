@@ -14,7 +14,12 @@ interface SearchRepositoriesFailed {
   payload: string;
 }
 
+interface removedAllPackage {
+  type: ActionType.REMOVE_ALL_PACKAGE;
+}
+
 export type Action =
   | SearchRepositoriesStart
   | SearchRepositoriesSuccess
-  | SearchRepositoriesFailed;
+  | SearchRepositoriesFailed
+  | removedAllPackage;
