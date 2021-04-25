@@ -33,3 +33,11 @@ export const searchRepositories = (term: string) => {
     }
   };
 };
+
+export const removedAllPackage = () => {
+  return (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.REMOVE_ALL_PACKAGE,
+    });
+  };
+};
