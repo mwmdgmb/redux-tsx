@@ -39,6 +39,14 @@ const reducer = (
         error: action.payload,
         data: [],
       };
+
+    case ActionType.REMOVE_ALL_PACKAGE:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        data: [],
+      };
     default:
       return state;
   }
