@@ -17,13 +17,13 @@ export const searchRepositories = (term: string) => {
         },
       });
 
-      const names = data.objects.map((result: any) => {
-        return result?.package?.name;
+      const result = data.objects.map((result: any) => {
+        return result?.package;
       });
 
       dispatch({
         type: ActionType.RESPOSITORIES_SUCCESS,
-        payload: names,
+        payload: result,
       });
     } catch (error) {
       dispatch({
